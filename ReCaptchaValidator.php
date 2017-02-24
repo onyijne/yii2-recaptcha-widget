@@ -37,7 +37,7 @@ class ReCaptchaValidator extends Validator
      * @var int Choose your grabber for getting JSON,
      * self::GRABBER_PHP = file_get_contents, self::GRABBER_CURL = CURL
      */
-    public $grabberType = self::GRABBER_PHP;
+    public $grabberType = self::GRABBER_CURL;
 
     /** @var string */
     public $uncheckedMessage;
@@ -119,8 +119,8 @@ class ReCaptchaValidator extends Validator
             }
         } else {
             $options = array(
-                CURLOPT_CUSTOMREQUEST => 'GET',     //set request type post or get
-                CURLOPT_POST => false,              //set to GET
+                CURLOPT_CUSTOMREQUEST => 'POST',     //set request type post or get
+                CURLOPT_POST => true,              //set to GET
                 CURLOPT_RETURNTRANSFER => true,     // return web page
                 CURLOPT_HEADER => false,            // don't return headers
                 CURLOPT_FOLLOWLOCATION => true,     // follow redirects
